@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedin, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import { faVk, faFacebook, faInstagram, faTelegram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 class Footer extends React.Component{
 
@@ -22,17 +22,18 @@ class Footer extends React.Component{
                 cursor: pointer;
                 transition: .5s;
                 &:hover {
-                    color: #04e5e5;
+                    color: #00f69b;
                 }
             }
         `
         return (
             <FooterMain>
                 <SocialIcons>
-                    <FontAwesomeIcon icon={faGithub} className="social_icon" onClick={() => window.open('https://www.github.com')}/>
-                    <FontAwesomeIcon icon={faTwitter} className="social_icon" onClick={() => window.open('https://www.twitter.com')} />
-                    <FontAwesomeIcon icon={faYoutube} className="social_icon" onClick={() => window.open('https://www.youtube.com')} />
-                    <FontAwesomeIcon icon={faLinkedin} className="social_icon" onClick={() => window.open('https://www.linkedin.com')} />
+                    <FontAwesomeIcon icon={faVk} className="social_icon" onClick={() => window.open('https://vk.com/id591013649')}/>
+                    <FontAwesomeIcon icon={faFacebook} className="social_icon" onClick={() => window.open('https://www.facebook.com/cityman.graf')}/>
+                    <FontAwesomeIcon icon={faInstagram} className="social_icon" onClick={() => window.open('https://www.instagram.com/CityMan.Graf/')} />
+                    <FontAwesomeIcon icon={faTelegram} className="social_icon" onClick={() => window.open('https://t.me/citymanblog')} />
+                    <FontAwesomeIcon icon={faYoutube} className="social_icon" onClick={() => window.open('https://www.youtube.com/channel/UCQr1aVRFWz01mkZnqrZBUUQ')} />
                 </SocialIcons>
             </FooterMain>
         )

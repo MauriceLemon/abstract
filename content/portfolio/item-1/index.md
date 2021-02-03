@@ -1,7 +1,8 @@
 ---
 id: 1
-image: './image.jpg'
-title: "Front-end Development"
-category: "React.js"
-link: "https://github.com"
+image: './image1.jpg'
+title: "Stellar Fund"
+category: ""
+categoryde: ""
+link: "https://stellarfund.io/ref/graf77rudolf"
 ---

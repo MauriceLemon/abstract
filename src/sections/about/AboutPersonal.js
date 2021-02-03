@@ -8,6 +8,14 @@ import AnimationContainer from 'components/animation-container'
 import TabsPart from 'sections/about/parts/TabsPart'
 
 class AboutPersonal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    componentDidMount() {
+        this.manageLanguages();
+    }
 
     render() {
         const Section = styled.section`
@@ -63,7 +71,7 @@ class AboutPersonal extends React.Component {
                 color: #fff;
             }
             .symbol {
-                color: #04e5e5;
+                color: #00F69B;
                 position: absolute;
                 font-size: 39px;
                 top: -28px;
@@ -86,16 +94,14 @@ class AboutPersonal extends React.Component {
 
         const AnimatedShadow = keyframes`
             0%   {box-shadow: 0 28px 60px rgba(4, 229, 229, .5);}
-            10%  {box-shadow: 0 28px 60px rgba(243, 112, 85, .5);}
-            20%  {box-shadow: 0 28px 60px rgba(239, 78, 123, .5);}
-            30%  {box-shadow: 0 28px 60px rgba(161, 102, 171, .5);}
-            40% {box-shadow: 0 28px 60px rgba(80, 115, 184, .5);}
-            50% {box-shadow: 0 28px 60px rgba(4, 229, 229, .5);}
-            60% {box-shadow: 0 28px 60px rgba(7, 179, 155, .5);}
-            70% {box-shadow: 0 28px 60px rgba(111, 186, 130, .5);}
-            80% {box-shadow: 0 28px 60px rgba(80, 115, 184, .5);}
-            90% {box-shadow: 0 28px 60px rgba(16, 152, 173, .5);}
-            100% {box-shadow: 0 28px 60px rgba(243, 112, 85, .5);}
+            12%  {box-shadow: 0 28px 60px rgba(0, 246, 155, .5);}
+            25% {box-shadow: 0 28px 60px rgba(80, 115, 184, .5);}
+            37% {box-shadow: 0 28px 60px rgba(4, 229, 229, .5);}
+            50% {box-shadow: 0 28px 60px rgba(7, 179, 155, .5);}
+            62% {box-shadow: 0 28px 60px rgba(111, 186, 130, .5);}
+            75% {box-shadow: 0 28px 60px rgba(80, 115, 184, .5);}
+            87% {box-shadow: 0 28px 60px rgba(16, 152, 173, .5);}
+            100% {box-shadow: 0 28px 60px rgba(0, 246, 155, .5);}
         `
         const ImageContainer = styled.div`
             border-radius: 20px;
@@ -119,19 +125,23 @@ class AboutPersonal extends React.Component {
         const Separator = styled.div`
             height: 5px;
             width: 50px;
-            background-color: #04e5e5;
+            background-color: #00F69B;
             margin-bottom: 20px;
         `
 
         const Heading = styled.h2`
-            font-size: 70px;
-            font-family: Teko;
+            font-size: 40px;
+            font-family: Montserrat;
             color: #fff;
             line-height: 50px;
+            
+            @media (max-width: 767px) {
+                font-size: 24px;
+            }
         `
 
         const Text = styled.p`
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 300;
             color: #c5c5c5;
         `
@@ -151,14 +161,26 @@ class AboutPersonal extends React.Component {
                         </LeftCol>
                         <Col md={6}>
                             <AnimationContainer animation="fadeIn">
-                                <Heading>About Me</Heading>
+                                <Heading>
+                                    {this.state.isDeLanguage}
+                                    {this.state.isDeLanguage ? 'Gründer des Teams' : 'Основатель команды'}
+                                </Heading>
                                 <Separator />
                                 <Text>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of 
-                                    type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                    It was popularised in the 1960s with the release of 
-                                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                    {this.state.isDeLanguage
+                                        ? `Mein Name ist Rudolf Graf. Ich lebe in der Stadt Heilbronn. Ich investiere mein 
+                                            Privatvermögen erfolgreich seit mehr als 4 Jahren und möchte Ihnen erzählen, 
+                                            wie Sie es mir gleichtun und sogar noch besser machen können. Ich werde Ihnen 
+                                            aufzeigen, wie Sie Ihr Einkommen steigern und materielle Probleme vergessen können, 
+                                            damit Sie mehr Zeit für Ihre Träume und Hobbys, Familie, Freunde und Reisen haben. 
+                                            Treten Sie meinem Graf-Team bei!`
+                                        : `Меня зовут Рудольф Граф. Живу в Германии, в городе Хайльбонн. Я успешно инвестирую
+                                            свои частные активы более 4-х лет и расскажу, как вы можете делать также и даже
+                                            лучше. Я покажу вам, как увеличить свой доход, забыть о материальных проблемах,
+                                            чтобы у вас было больше времени на ваши мечты и увлечения, семейные ценности, друзей
+                                            и путешествия. Вступайте в мою команду Graf-Team!`
+                                    }
+
                                 </Text>
                                 <TabsPart />
                             </AnimationContainer>
@@ -171,28 +193,28 @@ class AboutPersonal extends React.Component {
                             <Col md={3}>
                                 <AnimationContainer animation="fadeIn" delay={1000}>
                                     <CounterComponent>
-                                        <Counter value={5} duration={5} delay={1000} symbol="+" text="5 Years of Experience" animation={true} />
+                                        <Counter value={4} duration={5} delay={1000} text={this.state.isDeLanguage ? '4 Jahre Anlageerfahrung' : '4 года опыта инвестиций'} animation={true} />
                                     </CounterComponent>
                                 </AnimationContainer>
                             </Col>
                             <Col md={3}>
                                 <AnimationContainer animation="fadeIn" delay={1000}>
                                     <CounterComponent>
-                                        <Counter value={100} duration={5} delay={1000} symbol="+" text="Clients Worked With" animation={true} />
+                                        <Counter value={1500} duration={5} delay={1000} symbol="+" text={this.state.isDeLanguage ? 'über 1500 Leute in einem Team' : 'свыше 1500 человек в команде'} animation={true} />
                                     </CounterComponent>
                                 </AnimationContainer>
                             </Col>
                             <Col md={3}>
                                 <AnimationContainer animation="fadeIn" delay={1000}>
                                     <CounterComponent>
-                                        <Counter value={5} duration={5} delay={1000} text="Certifications" animation={true} />
+                                        <Counter value={10} duration={5} delay={1000} symbol="+" text={this.state.isDeLanguage ? 'mehr als 10 profitable Online-Projekte' : 'более 10-ти доходных онлайн-проектов'} animation={true} />
                                     </CounterComponent>
                                 </AnimationContainer>
                             </Col>
                             <Col md={3}>
                                 <AnimationContainer animation="fadeIn" delay={1000}>
                                     <CounterComponent>
-                                        <Counter value={10} duration={5} delay={1000} symbol="+" text="Honourable Awards" animation={true} />
+                                        <Counter value={100} duration={5} delay={1000} symbol="+" text={this.state.isDeLanguage ? 'mehr als 100.000 € / Jahr' : 'более €100k/год'} animation={true} />
                                     </CounterComponent>
                                 </AnimationContainer>
                             </Col>
@@ -201,6 +223,14 @@ class AboutPersonal extends React.Component {
                 </CounterRow>
             </Section>
         )
+    }
+
+    manageLanguages() {
+        var isDeLanguage = window.location.pathname.includes('/de/');
+
+        this.setState({
+            isDeLanguage: isDeLanguage
+        });
     }
 }
 

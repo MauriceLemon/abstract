@@ -65,13 +65,16 @@ class Animated_Heading extends React.Component {
             display: inline-block;
             transition: 1s;
             opacity: 0;
-            font-size: ${this.props.fontSize ? this.props.fontSize : "100px"};
+            font-size: ${this.props.fontSize ? this.props.fontSize : "50px"};
             line-height: ${this.props.lineHeight ? this.props.lineHeight : "90px"};
-            font-family: Teko;
-            text-transform: uppercase;
+            font-family: Montserrat;
             @media (max-width: 767px) {
-                font-size: 40px;
-                line-height: 40px;
+                font-size: 21px;
+                line-height: 24px;
+            }
+            @media (min-width:768px) and (max-width:1500px) {
+                font-size: 30px;
+                line-height: 24px;
             }
             &.animation_complete {
                 transform: translate(0, 0);
@@ -94,7 +97,7 @@ class Animated_Heading extends React.Component {
         return this.props.text.split(" ").map((value, index) => {
             return value.split("").map((v, i) => {
                 ++time
-                return i+1 !== value.length ? <AnimatedLetter key={i} style={{animationDelay: `${time*100}ms`, color: index % 2 !== 0 || this.props.color ? "#04e5e5" : "#fff"}} className={!this.state.animation_complete ? this.state.animate ? "animate" : "" : "animation_complete"}>{v}</AnimatedLetter> : <span key={i}><AnimatedLetter style={{animationDelay: `${time*100}ms`, color: index % 2 !== 0 || this.props.color ? "#04e5e5" : "#fff"}} className={!this.state.animation_complete ? this.state.animate ? "animate" : "" : "animation_complete"}>{v}</AnimatedLetter><Space /></span>
+                return i+1 !== value.length ? <AnimatedLetter key={i} style={{animationDelay: `${time*100}ms`, color: index % 2 !== 0 || this.props.color ? "#00f69b" : "#fff"}} className={!this.state.animation_complete ? this.state.animate ? "animate" : "" : "animation_complete"}>{v}</AnimatedLetter> : <span key={i}><AnimatedLetter style={{animationDelay: `${time*100}ms`, color: index % 2 !== 0 || this.props.color ? "#00f69b" : "#fff"}} className={!this.state.animation_complete ? this.state.animate ? "animate" : "" : "animation_complete"}>{v}</AnimatedLetter><Space /></span>
             })
         })
     }

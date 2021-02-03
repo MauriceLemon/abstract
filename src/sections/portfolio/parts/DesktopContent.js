@@ -42,7 +42,7 @@ class DesktopContent extends React.Component {
             display: flex;
             &.active {
                 animation: ${Animation} 1s forwards;
-                background-image: linear-gradient(to top, rgba(4,229,229,1), rgba(255, 255, 255, 0));
+                background-image: linear-gradient(to top, rgba(54,191,132,1), rgba(255, 255, 255, 0));
             }
         `
 
@@ -74,7 +74,6 @@ class DesktopContent extends React.Component {
             color: #fff;
             font-size: 20px;
             font-weight: 400;
-            text-transform: uppercase;
             text-align: center;
             @media (max-width:767px) {
                 font-size: 15px;

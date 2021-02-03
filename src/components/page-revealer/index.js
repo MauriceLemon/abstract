@@ -34,9 +34,9 @@ class PageRevealer extends React.Component {
             return (
                 <AnimationContainer animation="fadeIn">
                     <BaffleText
-                        text="Abstract"
-                        revealDuration={500}
-                        revealDelay={1000}
+                        text="Graf-Team"
+                        revealDuration={1000}
+                        revealDelay={500}
                         parentMethod={this.reveal}
                         callMethodTime={2000}
                     />
@@ -85,7 +85,7 @@ class PageRevealer extends React.Component {
             width: 100%;
             pointer-events: none;
             height: 100%;
-            background-color: #04e5e5;
+            background-color: #00f69b;
             transform: translateX(100%);
             &.animate {
                 animation: ${RevealAnimation} 1.1s cubic-bezier(0.2, 1, 0.3, 1) forwards;

@@ -10,6 +10,14 @@ import AnimatedHeading from 'components/animated-heading'
 import AnimationContainer from 'components/animation-container'
 
 class PortfolioThree extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    componentDidMount() {
+        this.manageLanguages();
+    }
     
     render() {
 
@@ -25,7 +33,7 @@ class PortfolioThree extends React.Component {
             .slick-dots {
               bottom: 0;
               li button:before,.slick-dots li.slick-active button:before {
-                color: #04e5e5;
+                color: #00f69b;
               }
             }
           }
@@ -35,12 +43,12 @@ class PortfolioThree extends React.Component {
         const settings = {
             dots: true,
             swipe: true,
-            infinite: true,
+            infinite: false,
             speed: 500,
-            slidesToShow: 4,
-            slidesToScroll: 2,
-            arrows: false,
-            autoplay: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: true,
+            autoplay: false,
             autoplaySpeed: 10000,
             loop: true,
             responsive: [
@@ -71,7 +79,7 @@ class PortfolioThree extends React.Component {
             <Section id="portfolio">
                   <Col md={12} style={{padding: 0}}>
                     <Container>
-                      <AnimatedHeading text="Recent projects" />
+                      <AnimatedHeading text={this.state.isDeLanguage ? 'Wählen Sie ein Projekt' : 'Выберите проект'} />
                     </Container>
                     <PortfolioContainer>
                       <AnimationContainer animation="fadeIn">
@@ -85,22 +93,30 @@ class PortfolioThree extends React.Component {
         )
     }
 
-  portfolio() {
+    portfolio() {
       const { items } = this.props
 
       return items.map((value, index) => {
         return (
-          <PortfolioItem 
+          <PortfolioItem
             key={index}
-            index={index} 
-            image={value.content.frontmatter.image.childImageSharp.fluid.src} 
-            text={value.content.frontmatter.title} 
-            category={value.content.frontmatter.category}
+            index={index}
+            image={value.content.frontmatter.image.childImageSharp.fluid.src}
+            text={value.content.frontmatter.title}
+            category={this.state.isDeLanguage ? value.content.frontmatter.categoryde : value.content.frontmatter.category}
             link={value.content.frontmatter.link}
             type="slider"
           />
         )
       })
+    }
+
+    manageLanguages() {
+        var isDeLanguage = window.location.pathname.includes('/de/');
+
+        this.setState({
+            isDeLanguage: isDeLanguage
+        });
     }
 }
 
@@ -115,10 +131,11 @@ export default props => (
                       id
                       title
                       category
+                      categoryde
                       link
                       image {
                         childImageSharp {
-                          fluid(maxWidth: 1000) {
+                          fluid(maxWidth: 3000) {
                             src
                           }
                         }

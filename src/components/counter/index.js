@@ -34,17 +34,15 @@ class Counter_Component extends React.Component {
         const { value, symbol} = this.props
 
         const Animation = keyframes`
-            0%  {color: #04e5e5;}
-            10% {color: #f37055;}
-            20% {color: #ef4e7b;}
-            30% {color: #a166ab;}
-            40% {color: #5073b8;}
-            50% {color: #04e5e5;}
-            60% {color: #07b39b;}
-            70% {color: #6fba82;}
-            80% {color: #5073b8;}
-            90% {color: #1098ad;}
-            100% {color: #f37055;}
+            0%  {color: #04E5E5;}
+            12% {color: #00F69B;}
+            25% {color: #5073B8;}
+            37% {color: #04E5E5;}
+            50% {color: #07B39B;}
+            62% {color: #6FBA82;}
+            75% {color: #5073B8;}
+            87% {color: #1098AD;}
+            100% {color: #00F69B;}
         `
         const Symbol = styled.span`
             animation: ${this.props.animation ? css`${Animation} 10s infinite alternate` : `none`};

@@ -1,8 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Abstract - Creative Agency Personal Portfolio Template',
-    description:
-      'Abstract is a beautiful template built using React and Gatsby for creative agency or personal projects',
+    title: 'Graf-Team',
+    description: 'Начните зарабатывать сегодня! - Verdienen Sie noch heute!'
   },
   pathPrefix: '/',
   plugins: [
@@ -37,25 +36,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/testimonials/`,
-        name: 'testimonials',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/team/`,
-        name: 'team',
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
           `Teko`,
-          `Poppins\:300,400,500,600,700`
+          `Montserrat\:300,400,500,600,700`
         ],
         display: 'swap'
       }

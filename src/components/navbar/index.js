@@ -11,12 +11,17 @@ class Navbar extends React.Component {
         this.state = {
           collapse: false,
           sticky: false,
-          sections: this.props.sections ? this.props.sections : ['home', 'about', 'services', 'portfolio', 'testimonials', 'clients', 'team', 'blog', 'contact']
+          sections: this.props.sections ? this.props.sections : ['home', 'about', 'services', 'portfolio'],
+          sectionNamesRu: ['Наверх', 'Основатель', 'Преимущества', 'Проекты'],
+          sectionNamesDe: ['Nach oben', 'Gründer', 'Vorteile', 'Projekte'],
+          languages: this.props.languages ? this.props.languages : ['ru', 'de'],
+          languageNames: this.props.languageNames ? this.props.languageNames : ['Рус', 'De']
         }
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll, { passive: true })
+        this.manageLanguages();
     }
 
     componentWillUnmount() {
@@ -104,6 +109,7 @@ class Navbar extends React.Component {
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            margin-right: 20px;
             @media (max-width: 500px) {
                 flex: 0 0 100%;
                 max-width: 100%;
@@ -118,7 +124,11 @@ class Navbar extends React.Component {
             }
         `
 
-        const NavInner = styled.div`
+        const NavInnerLeft = styled.div`
+            justify-content: flex-start;
+        `
+
+        const NavInnerRight = styled.div`
             justify-content: flex-end;
         `
 
@@ -146,9 +156,12 @@ class Navbar extends React.Component {
                         <FontAwesomeIcon icon={faBars} className="bars" />
                     </Toggler>
                     <Nav className={`navbar navbar-expand-sm ${this.state.collapse === true ? 'expand' : 'hidden_mobile'}`}>
-                        <NavInner className={`navbar-collapse collapse ${this.state.collapse === true ? 'show' : ''}`}>
-                            <div className="navbar-nav">{this.navItems()}</div>
-                        </NavInner>
+                        <NavInnerLeft className={`navbar-collapse collapse ${this.state.collapse === true ? 'show' : ''}`}>
+                            <div className="navbar-nav">{this.navItemsLeft()}</div>
+                        </NavInnerLeft>
+                        <NavInnerRight className={`navbar-collapse collapse ${this.state.collapse === true ? 'show' : ''}`}>
+                            <div className="navbar-nav">{this.navItemsRight()}</div>
+                        </NavInnerRight>
                     </Nav>
                 </NavbarContainer>
             </NavbarWrapper>
@@ -168,17 +181,61 @@ class Navbar extends React.Component {
         }
     }
 
-    navItems() {
+    navItemsLeft() {
         const NavItem = styled.button`
             background: none;
             border: none;
             color: #fff;
-            text-transform: capitalize;
+            font-weight: 500;
+            margin: 10px 5px;
+            padding: 1px 6px;
+            transition: .5s;
+            &:hover {
+                color: #00F69B;
+            }
+            &:focus {
+                outline: none;
+            }
+            @media (min-width: 501px) and (max-width: 1023px) {
+                font-size: 11px;
+                margin: 2px;
+            }
+
+            &.active {
+                color: #00F69B;
+                cursor: default;
+                pointer-events: none; 
+            }
+        `
+
+        return this.state.languages.map((value, index) => {
+            if (value === 'de') {
+                console.log(this.state);
+                return (
+                    <NavItem key={index} className={`${this.state.isDeActive === true ? 'active' : ''}`} onClick={this.actionDe}>
+                        {this.state.languageNames[index]}
+                    </NavItem>
+                )
+            } else {
+                return (
+                    <NavItem key={index} className={`${this.state.isRuActive === true ? 'active' : ''}`} onClick={this.actionRu}>
+                        {this.state.languageNames[index]}
+                    </NavItem>
+                )
+            }
+        })
+    }
+
+    navItemsRight() {
+        const NavItem = styled.button`
+            background: none;
+            border: none;
+            color: #fff;
             font-weight: 500;
             margin: 10px 5px;
             transition: .5s;
             &:hover {
-                color: #04e5e5;
+                color: #00F69B;
             }
             &:focus {
                 outline: none;
@@ -192,10 +249,33 @@ class Navbar extends React.Component {
         return this.state.sections.map((value, index) => {
             return (
                 <NavItem key={index} onClick={() => this.navigate(value)}>
-                    {value}
+                    {this.state.isDeActive ? this.state.sectionNamesDe[index] : this.state.sectionNamesRu[index]}
                 </NavItem>
             )
         })
+    }
+
+    manageLanguages() {
+        var project;
+        var origin = window.location.origin;
+        var pathname = window.location.pathname;
+
+        var isDeActive = pathname.includes('/de/');
+        var isRuActive = !isDeActive;
+
+        project = isDeActive ? pathname.slice(3) : pathname;
+
+        this.setState({
+            isDeActive: isDeActive,
+            isRuActive: isRuActive
+        });
+
+        this.actionDe = function () {
+            window.open(origin  + '/de' + project, '_self')
+        };
+        this.actionRu = function () {
+            window.open(origin + project, '_self')
+        };
     }
 }
 

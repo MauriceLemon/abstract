@@ -70,7 +70,6 @@ class PortfolioItem extends React.Component {
             color: #fff;
             font-size: 20px;
             font-weight: 400;
-            text-transform: uppercase;
         `
 
         const MobileContent = styled.div`
@@ -83,7 +82,7 @@ class PortfolioItem extends React.Component {
             display: flex;
             align-items: flex-end;
             visibility: visible;
-            background-image: linear-gradient(to top, rgba(4,229,229,1), rgba(255, 255, 255, 0));
+            background-image: linear-gradient(to top, rgba(0,246,155,1), rgba(255, 255, 255, 0));
             @media (min-width:1025px) {
                 display: none !important;
             }
@@ -122,10 +121,10 @@ class PortfolioItem extends React.Component {
                 }
             }
             &.blue-shadow {
-                box-shadow: 0 28px 60px rgb(4,229,229,.2);
+                box-shadow: 0 28px 60px rgb(0,246,155,.2);
                 transition: .5s;
                 &:hover {
-                    box-shadow: 0 28px 60px rgb(4,229,229,.5);
+                    box-shadow: 0 28px 60px rgb(0,246,155,.5);
                 }
                 
             }

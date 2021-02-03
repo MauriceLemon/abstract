@@ -12,28 +12,26 @@ class ProgressBar extends React.Component {
         `
         const Text = styled.span`
             font-size: 17px;
-            font-family: Poppins;
+            font-family: Montserrat;
             color: #fff;
         `
 
         const Value = styled.span`
             font-size: 17px;
-            font-family: Poppins;
+            font-family: Montserrat;
             color: #fff;
             float: right;
         `
         const ColorAnimation = keyframes`
-            0%  {background: #04e5e5;}
-            10% {background: #f37055;}
-            20% {background: #ef4e7b;}
-            30% {background: #a166ab;}
-            40% {background: #5073b8;}
-            50% {background: #04e5e5;}
-            60% {background: #07b39b;}
-            70% {background: #6fba82;}
-            80% {background: #5073b8;}
-            90% {background: #1098ad;}
-            100% {background: #f37055;}
+            0%  {background: #04E5E5;}
+            12% {background: #00F69B;}
+            25% {background: #5073B8;}
+            37% {background: #04E5E5;}
+            50% {background: #07B39B;}
+            62% {background: #6FBA82;}
+            75% {background: #5073B8;}
+            87% {background: #1098AD;}
+            100% {background: #00F69B;}
         `
 
         const Progress = styled.div`
@@ -48,7 +46,7 @@ class ProgressBar extends React.Component {
         return(
             <ProgressContainer>
                 <Text>{text}</Text>
-                <Value>{this.props.value}%</Value>
+                <Value>{this.props.desc}</Value>
                 <Progress style={{width: `${this.props.value}%`}}></Progress>
             </ProgressContainer>
         )
